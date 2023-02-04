@@ -94,6 +94,7 @@
 		7A80EA46298D5A9F00D2DBC0 /* clicker */ = {
 			isa = PBXGroup;
 			children = (
+				7A80EA72298D5B5B00D2DBC0 /* components */,
 				7A80EA47298D5A9F00D2DBC0 /* clickerApp.swift */,
 				7A80EA49298D5A9F00D2DBC0 /* ContentView.swift */,
 				7A80EA4B298D5AA000D2DBC0 /* Assets.xcassets */,
@@ -125,6 +126,13 @@
 				7A80EA64298D5AA000D2DBC0 /* clickerUITestsLaunchTests.swift */,
 			);
 			path = clickerUITests;
+			sourceTree = "<group>";
+		};
+		7A80EA72298D5B5B00D2DBC0 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -26,44 +26,50 @@ struct ContentView: View {
     
     // Render
     var body: some View {
-        VStack {
-            Text("\(count)")
-                .font(.system(size: 120))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .lineLimit(1)
-                .padding(.bottom, 102)
-            HStack() {
-                Button(action: {
-                    iterateCounter();
-                }) {
-                    Image(colorScheme == .dark ? "iteration-btn-dark" : "iteration-btn")
-                        .frame(width: 120, height: 120)
+        GeometryReader { geo in
+            VStack {
+                Text("\(count)")
+                    .font(.system(size: 120))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(1)
+                    .padding(.bottom, 102)
+                    .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                VStack() {
+                    HStack() {
+                        Button(action: {
+                            iterateCounter();
+                        }) {
+                            Image(colorScheme == .dark ? "iteration-btn-dark" : "iteration-btn")
+                                .frame(width: 120, height: 120)
+                        }
+                        .padding(.trailing, 20)
+                        Button(action: {
+                            iterateCountDown();
+                        }) {
+                            Image(colorScheme == .dark ? "deiterate-btn-dark" : "deiterate-btn")
+                                .frame(width: 120, height: 120)
+                                .opacity((count == 0) ? 0.3 : 1)
+                        }
+                        .disabled(count == 0)
+                    }
+                    .padding(.bottom, 44.0)
+                    Button(action: {
+                        resetCounter();
+                    }) {
+                        Text("Reset")
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    }
+                    .frame(width: 120, height: 36)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 2)
+                    )
                 }
-                .padding(.trailing, 20)
-                Button(action: {
-                    iterateCountDown();
-                }) {
-                    Image(colorScheme == .dark ? "deiterate-btn-dark" : "deiterate-btn")
-                        .frame(width: 120, height: 120)
-                        .opacity((count == 0) ? 0.3 : 1)
-                }
-                .disabled(count == 0)
+                .frame(width: 260.0, height: 200.0)
+                .position(x: geo.size.width / 2, y: geo.size.height - 560)
             }
-            .padding(.bottom, 44.0)
-            Button(action: {
-                resetCounter();
-            }) {
-                Text("Reset")
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            }
-            .frame(width: 120, height: 36)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 2)
-            )
         }
-        .padding()
     }
 }
 
